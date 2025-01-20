@@ -35,7 +35,15 @@ public class WorkoutServiceTests
         Assert.AreEqual(_context._testDB[getIndex], workout);
     }
 
-    //TODO: add a get test that calls out of bounds values
+    [TestMethod]
+    public void ServiceGetOutOfBounds()
+    {
+        WorkoutService service = new(_context);
+
+        Workout? workout = service.Get(100);
+
+        Assert.IsNull(workout);
+    }
 
     [TestMethod]
     public void ServiceAddTest()
@@ -65,7 +73,22 @@ public class WorkoutServiceTests
         Assert.AreEqual(workoutToUpdate, updatedWorkout);
     }
 
-    //TODO: Add an update test that tries to update an out of bounds index
+    [TestMethod]
+    public void ServiceUpdateOutOfBoundsTest()
+    {
+        WorkoutService service = new(_context);
+        Workout workoutToUpdate = new Workout(100, "something", date, 0, 0, 0);
+
+        try
+        {
+            service.Update(workoutToUpdate);
+        }
+        catch 
+        { 
+            //nothing should happen if the workout to update does not exist
+            Assert.Fail();
+        }
+    }
 
     [DataTestMethod]
     [DataRow(0)]
