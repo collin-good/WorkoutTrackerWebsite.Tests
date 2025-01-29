@@ -1,7 +1,6 @@
 ﻿using WorkoutTrackerWebsite.Data;
 using WorkoutTrackerWebsite.Models;
 using WorkoutTrackerWebsite.Controllers;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WorkoutTrackerWebsite.Tests;
 [TestClass]
@@ -18,7 +17,7 @@ public class WorkoutControllerTest
         List<Workout>? workouts = controller.GetAll().Value;
 
         Assert.IsNotNull(workouts);
-        Assert.AreEqual(_context._testDB, workouts);
+        CollectionAssert.AreEqual(_context._testDB, workouts);
     }
 
     [DataTestMethod]

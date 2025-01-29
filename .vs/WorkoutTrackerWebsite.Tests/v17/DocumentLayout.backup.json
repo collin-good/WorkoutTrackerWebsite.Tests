@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\C#\\WorkoutTrackerWebsite.Tests\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8FFDEA7F-2CF1-4D48-92E7-40ADDCD45CAB}|WorkoutTrackerWebsite.Tests.csproj|d:\\c#\\workouttrackerwebsite.tests\\workoutcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FFDEA7F-2CF1-4D48-92E7-40ADDCD45CAB}|WorkoutTrackerWebsite.Tests.csproj|solutionrelative:workoutcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8FFDEA7F-2CF1-4D48-92E7-40ADDCD45CAB}|WorkoutTrackerWebsite.Tests.csproj|d:\\c#\\workouttrackerwebsite.tests\\workoutservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8FFDEA7F-2CF1-4D48-92E7-40ADDCD45CAB}|WorkoutTrackerWebsite.Tests.csproj|solutionrelative:workoutservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "WorkoutControllerTest.cs",
+              "DocumentMoniker": "D:\\C#\\WorkoutTrackerWebsite.Tests\\WorkoutControllerTest.cs",
+              "RelativeDocumentMoniker": "WorkoutControllerTest.cs",
+              "ToolTip": "D:\\C#\\WorkoutTrackerWebsite.Tests\\WorkoutControllerTest.cs",
+              "RelativeToolTip": "WorkoutControllerTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T23:07:12.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "WorkoutServiceTests.cs",
               "DocumentMoniker": "D:\\C#\\WorkoutTrackerWebsite.Tests\\WorkoutServiceTests.cs",
               "RelativeDocumentMoniker": "WorkoutServiceTests.cs",
               "ToolTip": "D:\\C#\\WorkoutTrackerWebsite.Tests\\WorkoutServiceTests.cs",
               "RelativeToolTip": "WorkoutServiceTests.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAIwEsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T22:34:17.686Z",
               "EditorCaption": ""

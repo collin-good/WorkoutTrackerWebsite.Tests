@@ -1,3 +1,4 @@
+#define TESTING
 using WorkoutTrackerWebsite.Data;
 using WorkoutTrackerWebsite.Models;
 using WorkoutTrackerWebsite.Services;
@@ -18,7 +19,7 @@ public class WorkoutServiceTests
         List<Workout> workouts = service.GetSortedWorkouts();
 
         Assert.IsNotNull(workouts);
-        Assert.AreEqual(_context._testDB, workouts);
+        CollectionAssert.AreEqual(_context._testDB, workouts);
     }
 
     [DataTestMethod]
@@ -83,8 +84,8 @@ public class WorkoutServiceTests
         {
             service.Update(workoutToUpdate);
         }
-        catch 
-        { 
+        catch
+        {
             //nothing should happen if the workout to update does not exist
             Assert.Fail();
         }
@@ -101,5 +102,20 @@ public class WorkoutServiceTests
         service.Detete(workoutToDelete);
 
         Assert.IsNull(service.Get(workoutToDelete));
+    }
+
+    [TestMethod]
+    public void SortWorkoutByTypeTest()
+    {
+        WorkoutService service = new(_context);
+
+        //updating the sorting method and getting the list
+        service.UpdateSortMethod(WorkoutSortMethod.workoutType);
+        List<Workout> workouts = service.GetSortedWorkouts();
+
+        //making sure that the workouts are now sorted by workout type
+        Assert.AreEqual(_context._testDB[1], workouts[0]);
+        Assert.AreEqual(_context._testDB[0], workouts[1]);
+        Assert.AreEqual(_context._testDB[2], workouts[2]);
     }
 }
