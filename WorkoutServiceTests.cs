@@ -1,4 +1,3 @@
-#define TESTING
 using WorkoutTrackerWebsite.Data;
 using WorkoutTrackerWebsite.Models;
 using WorkoutTrackerWebsite.Services;
