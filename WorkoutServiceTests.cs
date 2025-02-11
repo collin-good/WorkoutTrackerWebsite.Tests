@@ -15,7 +15,7 @@ public class WorkoutServiceTests
     {
         WorkoutService service = new WorkoutService(_context);
 
-        List<Workout> workouts = service.GetSortedWorkouts();
+        List<Workout> workouts = service.GetSortedWorkouts().Result;
 
         Assert.IsNotNull(workouts);
         CollectionAssert.AreEqual(_context._testDB, workouts);
@@ -110,7 +110,7 @@ public class WorkoutServiceTests
 
         //updating the sorting method and getting the list
         service.UpdateSortMethod(WorkoutSortMethod.workoutType);
-        List<Workout> workouts = service.GetSortedWorkouts();
+        List<Workout> workouts = service.GetSortedWorkouts().Result;
 
         //making sure that the workouts are now sorted by workout type
         Assert.AreEqual(_context._testDB[1], workouts[0]);
