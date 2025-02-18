@@ -117,4 +117,46 @@ public class WorkoutServiceTests
         Assert.AreEqual(_context._testDB[0], workouts[1]);
         Assert.AreEqual(_context._testDB[2], workouts[2]);
     }
+
+    [DataTestMethod]
+    [DataRow("Bicep Curl", 1)]
+    [DataRow("Sit Ups", 2)]
+    [DataRow("i", 3)]
+    public void SearchWorkoutTest(string nameToSearch, int expectedResultCount)
+    {
+        WorkoutService service = new(_context);
+
+        var result = service.SearchByName(nameToSearch);
+
+        Assert.IsNotNull(result);
+        Assert.IsTrue(AllResultsContainTheSpecifiedString(nameToSearch, result));
+        Assert.AreEqual(expectedResultCount, result.Count);
+    }
+
+    private bool AllResultsContainTheSpecifiedString(string nameToSearch, List<Workout> results)
+    {
+        foreach (Workout result in results)
+        {
+            if(!result.Name.Contains(nameToSearch)) return false;
+        }
+
+        return true;
+    }
+
+    [TestMethod]
+    public void SearchWorkoutNotFoundTest()
+    {
+        WorkoutService service = new(_context);
+
+        var result = service.SearchByName("Test");
+
+        Assert.IsNotNull(result);
+        Assert.IsTrue(result.Count == 0);
+    }
+
+    [TestMethod]
+    public void SearchWorkoutCommandInjectionTest()
+    {
+
+    }
 }
