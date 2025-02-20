@@ -1,6 +1,7 @@
 ﻿using WorkoutTrackerWebsite.Data;
 using WorkoutTrackerWebsite.Models;
 using WorkoutTrackerWebsite.Controllers;
+using WorkoutTrackerWebsite.Services;
 
 namespace WorkoutTrackerWebsite.Tests;
 [TestClass]
@@ -40,6 +41,43 @@ public class WorkoutControllerTest
         WorkoutController controller = new(_context);
 
         Assert.IsNull(controller.Get(100).Value);
+    }
+
+    [DataTestMethod]
+    [DataRow("Bicep Curl", 1)]
+    [DataRow("Sit Ups", 2)]
+    [DataRow("i", 3)]
+    public void SearchWorkoutTest(string nameToSearch, int expectedResultCount)
+    {
+        WorkoutController controller = new(_context);
+
+        var result = controller.GetWorkoutsByName(nameToSearch).Value;
+
+        Assert.IsNotNull(result);
+        Assert.IsTrue(AllResultsContainTheSpecifiedString(nameToSearch, result));
+        Assert.AreEqual(expectedResultCount, result.Count);
+    }
+
+    public static bool AllResultsContainTheSpecifiedString(string nameToSearch, List<Workout> results)
+    {
+        foreach (Workout result in results)
+        {
+            if (!result.Name.Contains(nameToSearch))
+                return false;
+        }
+
+        return true;
+    }
+
+    [TestMethod]
+    public void SearchWorkoutNotFoundTest()
+    {
+        WorkoutService service = new(_context);
+
+        var result = service.GetByWorkoutName("Test");
+
+        Assert.IsNotNull(result);
+        Assert.IsTrue(result.Count == 0);
     }
 
     [TestMethod]

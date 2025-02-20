@@ -126,21 +126,11 @@ public class WorkoutServiceTests
     {
         WorkoutService service = new(_context);
 
-        var result = service.SearchByName(nameToSearch);
+        var result = service.GetByWorkoutName(nameToSearch);
 
         Assert.IsNotNull(result);
-        Assert.IsTrue(AllResultsContainTheSpecifiedString(nameToSearch, result));
+        Assert.IsTrue(WorkoutControllerTest.AllResultsContainTheSpecifiedString(nameToSearch, result));
         Assert.AreEqual(expectedResultCount, result.Count);
-    }
-
-    private bool AllResultsContainTheSpecifiedString(string nameToSearch, List<Workout> results)
-    {
-        foreach (Workout result in results)
-        {
-            if(!result.Name.Contains(nameToSearch)) return false;
-        }
-
-        return true;
     }
 
     [TestMethod]
@@ -148,15 +138,9 @@ public class WorkoutServiceTests
     {
         WorkoutService service = new(_context);
 
-        var result = service.SearchByName("Test");
+        var result = service.GetByWorkoutName("Test");
 
         Assert.IsNotNull(result);
         Assert.IsTrue(result.Count == 0);
-    }
-
-    [TestMethod]
-    public void SearchWorkoutCommandInjectionTest()
-    {
-
     }
 }
